@@ -194,4 +194,20 @@ button:hover {
 .checkbox-control input {
   margin-right: 10px;
 }
+
+@media (max-width: 768px) {
+  .panel {
+    width: 90%;
+    left: 5%;
+    padding: 10px 15px;
+    font-size: 14px;
+    z-index: 10;
+    max-height: 55%; /* Limita su altura a la mitad superior */
+    overflow-y: auto; /* Añade scroll si es necesario */
+  }
+  h2,
+  h3 {
+    font-size: 1.2em;
+  }
+}
 </style>
