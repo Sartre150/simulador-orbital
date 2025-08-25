@@ -18,7 +18,7 @@ const visualToggles = ref({
 
 // --- LÓGICA FINAL PARA LA INTERFAZ MÓVIL ---
 const isMobile = ref(window.innerWidth <= 768)
-const panelsVisible = ref(true) // Por defecto, los paneles son visibles
+const activePanel = ref('controls') // Por defecto, mostramos los controles
 
 const handleResize = () => {
   isMobile.value = window.innerWidth <= 768
@@ -31,9 +31,9 @@ onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
 })
 
-// Esta función simplemente invierte el estado de visibilidad
-const togglePanels = () => {
-  panelsVisible.value = !panelsVisible.value
+// Esta función cambia qué panel está activo
+const setActivePanel = (panelName) => {
+  activePanel.value = panelName
 }
 // --- FIN DE LA LÓGICA MÓVIL ---
 
@@ -68,21 +68,21 @@ const updateVisuals = (toggles) => {
     />
 
     <!-- RENDERIZADO CONDICIONAL FINAL -->
-    <!-- En escritorio, los paneles siempre se muestran. -->
-    <!-- En móvil, los paneles solo se muestran si 'panelsVisible' es true. -->
-    <template v-if="!isMobile || panelsVisible">
-      <ControlPanel
-        @updateCometParams="handleParamsUpdate"
-        @resetSimulation="handleReset"
-        @togglePause="togglePause"
-        @updateSpeed="updateSpeed"
-        @updateVisuals="updateVisuals"
-      />
-      <InfoPanel :simData="simulationData" />
-    </template>
+    <!-- En escritorio, se muestran ambos. -->
+    <!-- En móvil, solo se muestra el panel que esté activo. -->
+    <ControlPanel
+      v-if="!isMobile || activePanel === 'controls'"
+      @updateCometParams="handleParamsUpdate"
+      @resetSimulation="handleReset"
+      @togglePause="togglePause"
+      @updateSpeed="updateSpeed"
+      @updateVisuals="updateVisuals"
+    />
 
-    <!-- La barra de navegación solo se renderiza en móvil -->
-    <MobileNav v-if="isMobile" @togglePanels="togglePanels" :panelsVisible="panelsVisible" />
+    <InfoPanel v-if="!isMobile || activePanel === 'data'" :simData="simulationData" />
+
+    <!-- La barra de navegación solo se renderiza si estamos en móvil -->
+    <MobileNav v-if="isMobile" @setActivePanel="setActivePanel" />
   </div>
 </template>
 

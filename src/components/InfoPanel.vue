@@ -119,10 +119,9 @@ h3 {
   .panel-info {
     width: 90%;
     left: 5%;
-    top: auto;
-    bottom: 50px; /* Lo subimos para dejar espacio a la nueva barra de navegación */
-    background-color: rgba(30, 20, 20, 0.95);
-    z-index: 5;
+    /* Lo anclamos a la parte superior cuando es visible */
+    top: 20px;
+    bottom: auto;
   }
 }
 </style>

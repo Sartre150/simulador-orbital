@@ -202,8 +202,9 @@ button:hover {
     padding: 10px 15px;
     font-size: 14px;
     z-index: 10;
-    max-height: 55%; /* Limita su altura a la mitad superior */
-    overflow-y: auto; /* Añade scroll si es necesario */
+    /* Esto es clave: le damos mucha altura y scroll si es necesario */
+    max-height: 80%;
+    overflow-y: auto;
   }
   h2,
   h3 {
