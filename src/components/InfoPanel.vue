@@ -115,24 +115,4 @@ h3 {
   border-color: rgba(200, 50, 50, 0.7);
   color: #ffffff;
 }
-
-/* --- ESTILOS PARA MÓVILES --- */
-@media (max-width: 768px) {
-  .panel-info {
-    width: 90%;
-    left: 5%;
-    top: auto;
-    bottom: 20px;
-
-    /* <<< INICIO DE LA CORRECCIÓN CLAVE >>> */
-    z-index: 5; /* 1. Le damos una prioridad de apilamiento menor */
-    background-color: rgba(
-      30,
-      20,
-      20,
-      0.95
-    ); /* 2. Hacemos el fondo casi opaco para mejorar la legibilidad */
-    /* <<< FIN DE LA CORRECCIÓN CLAVE >>> */
-  }
-}
 </style>

@@ -194,24 +194,4 @@ button:hover {
 .checkbox-control input {
   margin-right: 10px;
 }
-
-/* --- ESTILOS PARA MÓVILES --- */
-@media (max-width: 768px) {
-  .panel {
-    width: 90%;
-    left: 5%;
-    padding: 10px 15px;
-    font-size: 14px;
-
-    /* <<< INICIO DE LA CORRECCIÓN CLAVE >>> */
-    z-index: 10; /* 1. Asegura que este panel esté siempre encima de otros */
-    max-height: 55%; /* 2. Limita su altura a poco más de la mitad de la pantalla */
-    overflow-y: auto; /* 3. Si el contenido no cabe, añade una barra de scroll */
-    /* <<< FIN DE LA CORRECCIÓN CLAVE >>> */
-  }
-  h2,
-  h3 {
-    font-size: 1.2em;
-  }
-}
 </style>
