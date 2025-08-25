@@ -59,7 +59,6 @@ const formatNumber = (num) => {
 </template>
 
 <style scoped>
-/* El CSS no cambia */
 .panel-info {
   position: absolute;
   top: 20px;
@@ -117,16 +116,23 @@ h3 {
   color: #ffffff;
 }
 
+/* --- ESTILOS PARA MÓVILES --- */
 @media (max-width: 768px) {
   .panel-info {
-    /* Hacemos que ocupe casi todo el ancho y lo centramos */
     width: 90%;
     left: 5%;
-    /* Lo movemos hacia abajo para que no choque con el panel de control */
     top: auto;
     bottom: 20px;
-    /* Hacemos que el fondo sea un poco más opaco para la legibilidad */
-    background-color: rgba(30, 20, 20, 0.9);
+
+    /* <<< INICIO DE LA CORRECCIÓN CLAVE >>> */
+    z-index: 5; /* 1. Le damos una prioridad de apilamiento menor */
+    background-color: rgba(
+      30,
+      20,
+      20,
+      0.95
+    ); /* 2. Hacemos el fondo casi opaco para mejorar la legibilidad */
+    /* <<< FIN DE LA CORRECCIÓN CLAVE >>> */
   }
 }
 </style>
